@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
+    <script src = 'javascript.js' defer></script>
     <link rel = 'stylesheet' href = 'style.css'>
-    <script src = 'javascript.js'></script>
+    
 </head>
 <body>
     <div class= 'calculator'>
@@ -17,7 +18,7 @@
                     <button>backspace</button>
                     <button>filler</button>
                 </div>
-                <div class = 'numbers'>
+                <div id = 'numBtns' class = 'numbers'>
                     <button class="numBtn">1</button>
                     <button class="numBtn">2</button>
                     <button class="numBtn">3</button>
@@ -32,12 +33,12 @@
                 </div>
                 
             </div>
-            <div class = 'operators'>
-                <button>÷</button>
-                <button>x</button>
-                <button>-</button>
-                <button>+</button>
-                <button>=</button>
+            <div id = 'opBtns' class = 'operators'>
+                <button class="opbtn">÷</button>
+                <button class="opbtn">x</button>
+                <button class="opbtn">-</button>
+                <button class="opbtn">+</button>
+                <button class="opbtn">=</button>
             </div>
         </div>
     </div>  
