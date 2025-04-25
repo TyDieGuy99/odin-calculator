@@ -3,6 +3,7 @@ let num1 = '';
 let operator = '';
 let num2 = '';
 let boolean = false;
+let checkNum = false;
 const display = document.querySelector('h3');
 display.innerHTML = ' ';
 //button setup
@@ -15,6 +16,11 @@ numBtns.forEach((button) => {
         const numBtnId = button.innerText;
         console.log(numBtnId);
         if (boolean == false) {
+            if (checkNum == true) {
+                num1 = '';
+                display.innerHTML = '';
+                checkNum = false;
+            }
             num1 = num1 + numBtnId;
             console.log('first number is: ' + num1);
         } else if (boolean == true) {
@@ -34,7 +40,7 @@ opBtns.forEach((button) => {
             if (boolean == false) {
                 operator = button.innerText;
                 boolean = true;
-                console.log(operator);
+                console.log('your operator is: ' + operator);
                 updateDisplay(operator);
             } else if (boolean == true) {
                 if (num2 !== '') {
@@ -42,8 +48,9 @@ opBtns.forEach((button) => {
                     operator = button.innerText;
                     boolean = true;
                     display.innerHTML = num1 + operator;
-                } else {
+                } else {                 
                     operator = button.innerText;
+                    console.log('your operator is: ' + operator);
                     display.innerHTML = num1 + operator;
                 }
             }
@@ -55,9 +62,9 @@ opBtns.forEach((button) => {
 const equalBtn = document.getElementById('equalBtn');
 equalBtn.addEventListener('click', () => {
     if (operator === '' ) {
-
+        console.log('you need an operator...')
     } else  if (num2 === '') {
-        
+        console.log('you need a second number...')
     } else {
         operate(num1, num2, operator);
         console.log(num1, num2, operator);
@@ -68,6 +75,7 @@ equalBtn.addEventListener('click', () => {
 const clearBtn = document.getElementById('clearBtn');
 clearBtn.addEventListener('click', () => {
     num1 = '';
+    checkNum = false;
     clear();
     display.innerHTML = '';
 });
@@ -79,6 +87,7 @@ function updateDisplay(value) {
 }
 
 function operate(a, b, op) {
+    checkNum = true;
     a = parseInt(a);
     b = parseInt(b);
     if (op === '+') {
@@ -94,24 +103,29 @@ function operate(a, b, op) {
 
 function add(a, b) {
     clear();
-    return num1 = a + b;
+    console.log('addition answer: ' + (parseInt(a) + parseInt(b)));
+    return num1 = a + b;   
 }
 
 function subtract(a, b) {
     clear();
+    console.log('subtraction answer: ' + (parseInt(a) - parseInt(b)));
     return num1 = a - b;
 }
 
 function multiply(a, b) {
     clear();
+    console.log('multiplication answer: ' + (parseInt(a) * parseInt(b)));
     return num1 = a * b;
 }
 function divide(a, b) {
     clear();
     if (b == 0) {
         num1 = 0;
+        console.log('nice going');
         return display.innerHTML = "BAD!"
     } else {
+        console.log('division answer: ' + (parseInt(a) / parseInt(b)));
         return num1 = a / b;
     }
     
