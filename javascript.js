@@ -37,10 +37,15 @@ opBtns.forEach((button) => {
                 console.log(operator);
                 updateDisplay(operator);
             } else if (boolean == true) {
-                operate(num1, num2, operator);
-                operator = button.innerText;
-                boolean = true;
-                display.innerHTML = num1 + operator;
+                if (num2 !== '') {
+                    operate(num1, num2, operator);
+                    operator = button.innerText;
+                    boolean = true;
+                    display.innerHTML = num1 + operator;
+                } else {
+                    operator = button.innerText;
+                    display.innerHTML = num1 + operator;
+                }
             }
     });
     }
