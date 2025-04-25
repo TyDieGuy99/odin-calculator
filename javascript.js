@@ -1,29 +1,51 @@
 //variables
 let num1 = '';
-let operator = '+';
-let num2 = 5;
+let operator = '';
+let num2 = '';
+let boolean = false;
 const display = document.querySelector('h3');
 display.innerHTML = ' ';
 //button setup
+
+//for the numbers
 const numbers = document.getElementById('numBtns');
 const numBtns = numbers.querySelectorAll('button');
 numBtns.forEach((button) => {
     button.addEventListener('click', () => {
         const numBtnId = button.innerText;
         console.log(numBtnId);
-        num1 = num1 + numBtnId;
-        console.log(num1);
+        if (boolean == false) {
+            num1 = num1 + numBtnId;
+            console.log('first number is: ' + num1);
+        } else if (boolean == true) {
+            num2 = num2 + numBtnId;
+            console.log('second number is: ' + num2);
+        }
         updateDisplay(numBtnId);
     });
 });
 
+//for the operations
 const ops = document.getElementById('opBtns');
 const opBtns = ops.querySelectorAll('button');
 opBtns.forEach((button) => {
-    button.addEventListener('click', () => {
-        const opBtnId = button.innerText;
-        console.log(opBtnId);
+    if (button.innerText !== '=') {
+        button.addEventListener('click', () => {
+            operator = button.innerText;
+            boolean = true;
+            console.log(operator);
+            updateDisplay(operator);
     });
+    }
+});
+
+//for equals
+const equalBtn = document.getElementById('equalBtn');
+equalBtn.addEventListener('click', () => {
+    num1 = parseInt(num1);
+    num2 = parseInt(num2);
+    operate(num1, num2, operator);
+    console.log(num1, num2, operator);
 });
 
 
@@ -35,18 +57,19 @@ function updateDisplay(value) {
 
 function operate(a, b, op) {
     if (op === '+') {
-        return add(a, b);
+        return display.innerHTML = add(a, b);
     } else if (op === '-') {
-        return subtract(a, b);
-    } else if (op === '*') {
-        return multiply(a, b);
-    } else if (op === '/') {
-        return divide(a, b);
+        return display.innerHTML = subtract(a, b);
+    } else if (op === 'x') {
+        return display.innerHTML = multiply(a, b);
+    } else if (op === '÷') {
+        return display.innerHTML = divide(a, b);
     }
 }
 
 function add(a, b) {
-    return a + b;
+    console.log('add these two numbers for: ' + a + b);
+    return parseInt(a + b);
 }
 
 function subtract(a, b) {
