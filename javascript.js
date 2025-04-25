@@ -54,8 +54,14 @@ opBtns.forEach((button) => {
 //for equals
 const equalBtn = document.getElementById('equalBtn');
 equalBtn.addEventListener('click', () => {
-    operate(num1, num2, operator);
-    console.log(num1, num2, operator);
+    if (operator === '' ) {
+
+    } else  if (num2 === '') {
+        
+    } else {
+        operate(num1, num2, operator);
+        console.log(num1, num2, operator);
+    }
 });
 
 //clear button
@@ -102,7 +108,13 @@ function multiply(a, b) {
 }
 function divide(a, b) {
     clear();
-    return num1 = a / b;
+    if (b == 0) {
+        num1 = 0;
+        return display.innerHTML = "BAD!"
+    } else {
+        return num1 = a / b;
+    }
+    
 }
 
 function clear() {
