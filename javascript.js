@@ -57,9 +57,7 @@ equalBtn.addEventListener('click', () => {
 const clearBtn = document.getElementById('clearBtn');
 clearBtn.addEventListener('click', () => {
     num1 = '';
-    num2 = '';
-    operator = '';
-    boolean = false;
+    clear();
     display.innerHTML = '';
 });
 
@@ -84,32 +82,26 @@ function operate(a, b, op) {
 }
 
 function add(a, b) {
-    num1 = a + b;
-    operator = '';
-    num2 = '';
-    boolean = false;
-    return (a + b);
+    clear();
+    return num1 = a + b;
 }
 
 function subtract(a, b) {
-    num1 = a - b;
-    operator = '';
-    num2 = '';
-    boolean = false;
-    return a - b;
+    clear();
+    return num1 = a - b;
 }
 
 function multiply(a, b) {
-    num1 = a * b;
-    operator = '';
-    num2 = '';
-    boolean = false;
-    return a * b;
+    clear();
+    return num1 = a * b;
 }
 function divide(a, b) {
-    num1 = a / b;
+    clear();
+    return num1 = a / b;
+}
+
+function clear() {
     operator = '';
     num2 = '';
     boolean = false;
-    return a / b;
 }
