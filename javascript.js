@@ -38,6 +38,9 @@ opBtns.forEach((button) => {
                 updateDisplay(operator);
             } else if (boolean == true) {
                 operate(num1, num2, operator);
+                operator = button.innerText;
+                boolean = true;
+                display.innerHTML = num1 + operator;
             }
     });
     }
@@ -89,12 +92,24 @@ function add(a, b) {
 }
 
 function subtract(a, b) {
+    num1 = a - b;
+    operator = '';
+    num2 = '';
+    boolean = false;
     return a - b;
 }
 
 function multiply(a, b) {
+    num1 = a * b;
+    operator = '';
+    num2 = '';
+    boolean = false;
     return a * b;
 }
 function divide(a, b) {
+    num1 = a / b;
+    operator = '';
+    num2 = '';
+    boolean = false;
     return a / b;
 }
