@@ -1,16 +1,27 @@
 //variables
-let num1 = 0;
-let operator = '';
-let num2 = 0;
+let num1 = 5;
+let operator = '+';
+let num2 = 5;
 
 //functions
+function operate(a, b, op) {
+    if (op === '+') {
+        return add(a, b);
+    } else if (op === '-') {
+        return subtract(a, b);
+    } else if (op === '*') {
+        return multiply(a, b);
+    } else if (op === '/') {
+        return divide(a, b);
+    }
+}
 
-function add(num1, num2) {
-    return num1 + num2;
+function add(a, b) {
+    return a + b;
 }
 
 function subtract(a, b) {
-    return a -b;
+    return a - b;
 }
 
 function multiply(a, b) {
