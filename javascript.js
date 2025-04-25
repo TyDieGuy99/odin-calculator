@@ -1,5 +1,5 @@
 //variables
-let num1 = 5;
+let num1 = '';
 let operator = '+';
 let num2 = 5;
 const display = document.querySelector('h3');
@@ -9,9 +9,20 @@ const numbers = document.getElementById('numBtns');
 const numBtns = numbers.querySelectorAll('button');
 numBtns.forEach((button) => {
     button.addEventListener('click', () => {
-        const btnId = button.innerText;
-        console.log(btnId);
-        updateDisplay(btnId);
+        const numBtnId = button.innerText;
+        console.log(numBtnId);
+        num1 = num1 + numBtnId;
+        console.log(num1);
+        updateDisplay(numBtnId);
+    });
+});
+
+const ops = document.getElementById('opBtns');
+const opBtns = ops.querySelectorAll('button');
+opBtns.forEach((button) => {
+    button.addEventListener('click', () => {
+        const opBtnId = button.innerText;
+        console.log(opBtnId);
     });
 });
 
