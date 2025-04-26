@@ -3,9 +3,9 @@ let num1 = '';
 let operator = '';
 let num2 = '';
 let boolean = false;
-let checkNum = false;
+let checkNum = true;
 const display = document.querySelector('h3');
-display.innerHTML = ' ';
+display.innerHTML = '0';
 //button setup
 
 //for the numbers
@@ -88,17 +88,19 @@ function updateDisplay(value) {
 
 function operate(a, b, op) {
     checkNum = true;
-    a = parseInt(a);
-    b = parseInt(b);
+    a = parseFloat(a);
+    b = parseFloat(b);
+    let answer = 0
     if (op === '+') {
-        return display.innerHTML = add(a, b);
+        answer = add(a, b);
     } else if (op === '-') {
-        return display.innerHTML = subtract(a, b);
+        answer = subtract(a, b);
     } else if (op === 'x') {
-        return display.innerHTML = multiply(a, b);
+        answer = multiply(a, b);
     } else if (op === '÷') {
-        return display.innerHTML = divide(a, b);
+        answer = divide(a, b);
     }
+    return display.innerHTML = round(answer).toString();
 }
 
 function add(a, b) {
@@ -129,6 +131,10 @@ function divide(a, b) {
         return num1 = a / b;
     }
     
+}
+
+function round (roundedNumber) {
+    return parseFloat(Math.round(roundedNumber + 'e' + 15) + 'e-' + 15);
 }
 
 function clear() {
