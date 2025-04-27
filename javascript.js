@@ -83,12 +83,20 @@ clearBtn.addEventListener('click', () => {
 //backspace button
 const delBtn = document.getElementById('delBtn');
 delBtn.addEventListener('click', () => {
-    if (boolean == false) {
-        num1 = num1.slice(0, -1);
-        console.log('first number is: ' + num1);
-    } else if (boolean == true) {
-        num2 = num2.slice(0, -1);
-        console.log('second number is: ' + num2);
+    const strIndex = display.innerHTML.length - 1;
+    console.log('index str: ' + strIndex);
+    const prevChar = display.innerHTML.charAt(strIndex).toString();
+    if (/^\d$/.test(prevChar) || prevChar === '.') {
+        console.log('prev number: ' + prevChar);
+        if (boolean == false) {
+            num1 = num1.slice(0, -1);
+            console.log('first number is: ' + num1);
+        } else if (boolean == true) {
+            num2 = num2.slice(0, -1)
+            console.log('second number is: ' + num2);
+        } 
+    } else {
+        boolean = false;
     }
     display.innerHTML = display.innerHTML.slice(0, -1);
 });
