@@ -77,7 +77,20 @@ clearBtn.addEventListener('click', () => {
     num1 = '';
     checkNum = false;
     clear();
-    display.innerHTML = '';
+    display.innerHTML = '0';
+});
+
+//backspace button
+const delBtn = document.getElementById('delBtn');
+delBtn.addEventListener('click', () => {
+    if (boolean == false) {
+        num1 = num1.slice(0, -1);
+        console.log('first number is: ' + num1);
+    } else if (boolean == true) {
+        num2 = num2.slice(0, -1);
+        console.log('second number is: ' + num2);
+    }
+    display.innerHTML = display.innerHTML.slice(0, -1);
 });
 
 //functions
