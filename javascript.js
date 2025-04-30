@@ -6,6 +6,7 @@ let boolean = false;
 let checkNum = true;
 const display = document.querySelector('h3');
 display.innerHTML = '0';
+
 //button setup
 
 //for the numbers
@@ -75,7 +76,7 @@ equalBtn.addEventListener('click', () => {
 const clearBtn = document.getElementById('clearBtn');
 clearBtn.addEventListener('click', () => {
     num1 = '';
-    checkNum = false;
+    checkNum = true;
     clear();
     display.innerHTML = '0';
 });
