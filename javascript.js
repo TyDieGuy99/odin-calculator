@@ -2,20 +2,28 @@
 let num1 = '';
 let operator = '';
 let num2 = '';
-let boolean = false;
+let boolean = false; //false is for first number, true is for second number
 let checkNum = true;
 const display = document.querySelector('h3');
 display.innerHTML = '0';
+let decBtnCheck = false;
 
 //button setup
 
 //for the numbers
 const numbers = document.getElementById('numBtns');
+const decBtn = document.getElementById('decBtn');
 const numBtns = numbers.querySelectorAll('button');
 numBtns.forEach((button) => {
     button.addEventListener('click', () => {
         const numBtnId = button.innerText;
         console.log(numBtnId);
+        if (numBtnId == '.') {
+            if (decBtnCheck == false) {
+                decBtnCheck = true;
+                decBtn.disabled = true;
+            }
+        }
         if (boolean == false) {
             if (checkNum == true) {
                 num1 = '';
@@ -41,6 +49,8 @@ opBtns.forEach((button) => {
             if (boolean == false) {
                 operator = button.innerText;
                 boolean = true;
+                decBtnCheck = false;
+                decBtn.disabled = false;
                 console.log('your operator is: ' + operator);
                 updateDisplay(operator);
             } else if (boolean == true) {
@@ -89,6 +99,10 @@ delBtn.addEventListener('click', () => {
     const prevChar = display.innerHTML.charAt(strIndex).toString();
     if (/^\d$/.test(prevChar) || prevChar === '.') {
         console.log('prev number: ' + prevChar);
+        if (prevChar === '.') {
+            decBtnCheck = false;
+            decBtn.disabled = false;
+        }
         if (boolean == false) {
             num1 = num1.slice(0, -1);
             console.log('first number is: ' + num1);
@@ -98,6 +112,8 @@ delBtn.addEventListener('click', () => {
         } 
     } else {
         boolean = false;
+        decBtnCheck = true;
+        decBtn.disabled = true;
     }
     display.innerHTML = display.innerHTML.slice(0, -1);
 });
@@ -163,4 +179,6 @@ function clear() {
     operator = '';
     num2 = '';
     boolean = false;
+    decBtnCheck = false;
+    decBtn.disabled = false;
 }
