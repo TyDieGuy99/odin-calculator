@@ -5,7 +5,7 @@ let num2 = '';
 let boolean = false; //false is for first number, true is for second number
 let checkNum = true;
 const display = document.querySelector('h3');
-display.innerHTML = '0';
+display.textContent = '0';
 let decBtnCheck = false;
 
 //button setup
@@ -27,7 +27,7 @@ numBtns.forEach((button) => {
         if (boolean == false) {
             if (checkNum == true) {
                 num1 = '';
-                display.innerHTML = '';
+                display.textContent = '';
                 checkNum = false;
             }
             num1 = num1 + numBtnId;
@@ -58,11 +58,11 @@ opBtns.forEach((button) => {
                     operate(num1, num2, operator);
                     operator = button.innerText;
                     boolean = true;
-                    display.innerHTML = num1 + operator;
+                    display.textContent = num1 + operator;
                 } else {                 
                     operator = button.innerText;
                     console.log('your operator is: ' + operator);
-                    display.innerHTML = num1 + operator;
+                    display.textContent = num1 + operator;
                 }
             }
     });
@@ -88,15 +88,15 @@ clearBtn.addEventListener('click', () => {
     num1 = '';
     checkNum = true;
     clear();
-    display.innerHTML = '0';
+    display.textContent = '0';
 });
 
 //backspace button
 const delBtn = document.getElementById('delBtn');
 delBtn.addEventListener('click', () => {
-    const strIndex = display.innerHTML.length - 1;
+    const strIndex = display.textContent.length - 1;
     console.log('index str: ' + strIndex);
-    const prevChar = display.innerHTML.charAt(strIndex).toString();
+    const prevChar = display.textContent.charAt(strIndex).toString();
     if (/^\d$/.test(prevChar) || prevChar === '.') {
         console.log('prev number: ' + prevChar);
         if (prevChar === '.') {
@@ -115,13 +115,36 @@ delBtn.addEventListener('click', () => {
         decBtnCheck = true;
         decBtn.disabled = true;
     }
-    display.innerHTML = display.innerHTML.slice(0, -1);
+    display.textContent = display.textContent.slice(0, -1);
 });
+
+//positive and negative
+const posNegBtn = document.getElementById('posNegBtn');
+posNegBtn.addEventListener('click', () => {
+    if (boolean == false) {
+        num1 = num1 * -1;
+        if (num1 < 0) {
+            display.textContent = num1;
+        } else {
+            display.textContent = num1
+        }
+        console.log('first number is: ' + num1);
+    } else if (boolean == true) {
+        num2 = num2 * -1;
+        if (num2 < 0) {
+            display.textContent = num1 + operator + '(' + num2 + ')';
+        } else {
+            display.textContent = num1 + operator +  num2;
+        }
+        console.log('second number is: ' + num2);
+    }
+    
+})
 
 //functions
 function updateDisplay(value) {
-    let currentDisplay = display.innerHTML;
-    display.innerHTML = currentDisplay + value;
+    let currentDisplay = display.textContent;
+    display.textContent = currentDisplay + value;
 }
 
 function operate(a, b, op) {
@@ -138,7 +161,7 @@ function operate(a, b, op) {
     } else if (op === '÷') {
         answer = divide(a, b);
     }
-    return display.innerHTML = round(answer).toString();
+    return display.textContent = round(answer).toString();
 }
 
 function add(a, b) {
@@ -163,7 +186,7 @@ function divide(a, b) {
     if (b == 0) {
         num1 = 0;
         console.log('nice going');
-        return display.innerHTML = "BAD!"
+        return display.textContent = "BAD!"
     } else {
         console.log('division answer: ' + (parseInt(a) / parseInt(b)));
         return num1 = a / b;
