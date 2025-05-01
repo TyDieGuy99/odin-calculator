@@ -104,10 +104,10 @@ delBtn.addEventListener('click', () => {
             decBtn.disabled = false;
         }
         if (boolean == false) {
-            num1 = num1.slice(0, -1);
+            num1 = num1.toString().slice(0, -1);
             console.log('first number is: ' + num1);
         } else if (boolean == true) {
-            num2 = num2.slice(0, -1)
+            num2 = num2.toString().slice(0, -1);
             console.log('second number is: ' + num2);
         } 
     } else {
@@ -126,7 +126,7 @@ posNegBtn.addEventListener('click', () => {
         if (num1 < 0) {
             display.textContent = num1;
         } else {
-            display.textContent = num1
+            display.textContent = num1;
         }
         console.log('first number is: ' + num1);
     } else if (boolean == true) {
