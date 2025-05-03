@@ -139,6 +139,10 @@ delBtn.addEventListener('click', () => {
             display.textContent = display.textContent.slice(0, -2) + ')';
             console.log('we are at thgis point');
             num2 = num2.toString().slice(0, -1);
+            if (num2 === '-') {
+                display.textContent = display.textContent.slice(0, -3);
+                num2 = 0;
+            }
             console.log(num2);
         } else { //when deleting an operator
             boolean = false;
