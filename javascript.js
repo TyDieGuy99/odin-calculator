@@ -99,6 +99,7 @@ delBtn.addEventListener('click', () => {
     const strIndex = display.textContent.length - 1;
     console.log('index str: ' + strIndex);
     const prevChar = display.textContent.charAt(strIndex).toString();
+    console.log(prevChar);
     if (/^\d$/.test(prevChar) || prevChar === '.') {
         console.log('prev number: ' + prevChar);
         if (prevChar === '.') { //if deleting a decimal, set check back to false
@@ -109,13 +110,28 @@ delBtn.addEventListener('click', () => {
         if (boolean == false) { //1st number
             num1 = num1.toString().slice(0, -1);
             console.log('first number is: ' + num1);
+            if (num1 !== '0') { //check to see if there is a first number
+                display.textContent = display.textContent.slice(0, -1);
+            }
+        
+            if (num1 === '-' || num1 === '') { //reset display when remaining str is a - or nothing
+                checkNum = true;
+                display.textContent = '0';
+                num1 = 0;
+            }
             
         } else if (boolean == true) { //2nd number
             num2 = num2.toString().slice(0, -1);
             console.log('second number is: ' + num2);
         } 
+    } else if (prevChar === ')') { //check if the number is negative
+        display.textContent = display.textContent.slice(0, -2) + ')';
+        console.log('we are at thgis point');
+        num2 = num2.toString().slice(0, -1);
+        console.log(num2);
     } else { //when deleting an operator
         boolean = false;
+        display.textContent = display.textContent.slice(0, -1);
         if (decNum === false) {
             decBtnCheck = false;
             decBtn.disabled = false;
@@ -123,17 +139,9 @@ delBtn.addEventListener('click', () => {
             decBtnCheck = true;
             decBtn.disabled = true;
         }
-        }
         
-    if (num1 !== '0') { //check to see if there is a first number
-        display.textContent = display.textContent.slice(0, -1);
     }
-
-    if (num1 === '-' || num1 === '') { //reset display when remaining str is a - or nothing
-        checkNum = true;
-        display.textContent = '0';
-        num1 = 0;
-    }
+    
 });
 
 //positive and negative
@@ -147,7 +155,7 @@ posNegBtn.addEventListener('click', () => {
             display.textContent = num1;
         }
         console.log('first number is: ' + num1);
-    } else if (boolean == true) {
+    } else if (boolean == true && num2 !== '') {
         num2 = num2 * -1;
         if (num2 < 0) {
             display.textContent = num1 + operator + '(' + num2 + ')';
