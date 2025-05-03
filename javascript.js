@@ -106,6 +106,7 @@ delBtn.addEventListener('click', () => {
         if (boolean == false) {
             num1 = num1.toString().slice(0, -1);
             console.log('first number is: ' + num1);
+            
         } else if (boolean == true) {
             num2 = num2.toString().slice(0, -1);
             console.log('second number is: ' + num2);
@@ -115,7 +116,15 @@ delBtn.addEventListener('click', () => {
         decBtnCheck = true;
         decBtn.disabled = true;
     }
-    display.textContent = display.textContent.slice(0, -1);
+    if (num1 !== '0') {
+        display.textContent = display.textContent.slice(0, -1);
+    }
+
+    if (num1 === '-' || num1 === '') {
+        checkNum = true;
+        display.textContent = '0';
+        num1 = 0;
+    }
 });
 
 //positive and negative
