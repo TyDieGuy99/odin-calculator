@@ -3,10 +3,11 @@ let num1 = '';
 let operator = '';
 let num2 = '';
 let boolean = false; //false is for first number, true is for second number
-let checkNum = true;
+let checkNum = true; //used to set the display to show 0
 const display = document.querySelector('h3');
 display.textContent = '0';
-let decBtnCheck = false;
+let decNum = false;
+let decBtnCheck = false; //check if a decimal is in place
 
 //button setup
 
@@ -22,6 +23,7 @@ numBtns.forEach((button) => {
             if (decBtnCheck == false) {
                 decBtnCheck = true;
                 decBtn.disabled = true;
+                decNum = true;
             }
         }
         if (boolean == false) {
@@ -99,28 +101,35 @@ delBtn.addEventListener('click', () => {
     const prevChar = display.textContent.charAt(strIndex).toString();
     if (/^\d$/.test(prevChar) || prevChar === '.') {
         console.log('prev number: ' + prevChar);
-        if (prevChar === '.') {
+        if (prevChar === '.') { //if deleting a decimal, set check back to false
             decBtnCheck = false;
             decBtn.disabled = false;
+            decNum = false;
         }
-        if (boolean == false) {
+        if (boolean == false) { //1st number
             num1 = num1.toString().slice(0, -1);
             console.log('first number is: ' + num1);
             
-        } else if (boolean == true) {
+        } else if (boolean == true) { //2nd number
             num2 = num2.toString().slice(0, -1);
             console.log('second number is: ' + num2);
         } 
-    } else {
+    } else { //when deleting an operator
         boolean = false;
-        decBtnCheck = true;
-        decBtn.disabled = true;
-    }
-    if (num1 !== '0') {
+        if (decNum === false) {
+            decBtnCheck = false;
+            decBtn.disabled = false;
+        } else {
+            decBtnCheck = true;
+            decBtn.disabled = true;
+        }
+        }
+        
+    if (num1 !== '0') { //check to see if there is a first number
         display.textContent = display.textContent.slice(0, -1);
     }
 
-    if (num1 === '-' || num1 === '') {
+    if (num1 === '-' || num1 === '') { //reset display when remaining str is a - or nothing
         checkNum = true;
         display.textContent = '0';
         num1 = 0;
