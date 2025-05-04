@@ -20,11 +20,15 @@ numBtns.forEach((button) => {
     button.addEventListener('click', () => {
         const numBtnId = button.innerText;
         console.log(numBtnId);
-        if (numBtnId == '.') {
+        if (numBtnId === '.') {
             if (decBtnCheck == false) {
                 decBtnCheck = true;
                 decBtn.disabled = true;
                 decNum = true;
+                checkNum = false;
+                console.log('this check went through');
+            } else {
+
             }
         }
         if (boolean == false) {
