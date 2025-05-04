@@ -1,12 +1,12 @@
 //variables
-let num1 = '';
+let num1 = 0;
 let operator = '';
 let num2 = '';
 let boolean = false; //false is for first number, true is for second number
 let checkNum = true; //used to set the display to show 0
 const display = document.querySelector('h3');
-display.textContent = '0';
-let decNum = false;
+display.textContent = 0;
+let decNum = false;  //if num1 has a decimal, deleting the op will prevent another dec being added
 let decBtnCheck = false; //check if a decimal is in place
 let backspaceClear = false; //if user hits backspace on answer, set to 0
 
@@ -28,10 +28,14 @@ numBtns.forEach((button) => {
             }
         }
         if (boolean == false) {
-            if (checkNum == true) {
+            if (checkNum === true) {
                 num1 = '';
                 display.textContent = '';
                 checkNum = false;
+                backspaceClear = false;
+                decNum = false;
+                decBtnCheck = false;
+                decBtn.disabled = false;
             }
             num1 = num1 + numBtnId;
             console.log('first number is: ' + num1);
@@ -62,10 +66,13 @@ opBtns.forEach((button) => {
                     operator = button.innerText;
                     boolean = true;
                     display.textContent = num1 + operator;
+                    backspaceClear = true;
+                    checkNum = true;
                 } else {                 
                     operator = button.innerText;
                     console.log('your operator is: ' + operator);
                     display.textContent = num1 + operator;
+                    
                 }
             }
     });
@@ -81,16 +88,18 @@ equalBtn.addEventListener('click', () => {
         console.log('you need a second number...')
     } else {
         operate(num1, num2, operator);
-        console.log(num1, num2, operator);
         backspaceClear = true;
         decBtn.disabled = true;
+        checkNum = true;
+        console.log(num1, num2, operator);
+        console.log(boolean, checkNum, backspaceClear, decNum, decBtnCheck);
     }
 });
 
 //clear button
 const clearBtn = document.getElementById('clearBtn');
 clearBtn.addEventListener('click', () => {
-    num1 = '';
+    num1 = 0;
     checkNum = true;
     clear();
     display.textContent = '0';
@@ -192,10 +201,9 @@ function updateDisplay(value) {
 }
 
 function operate(a, b, op) {
-    checkNum = true;
     a = parseFloat(a);
     b = parseFloat(b);
-    let answer = 0
+    let answer = 0;
     if (op === '+') {
         answer = add(a, b);
     } else if (op === '-') {
@@ -205,7 +213,13 @@ function operate(a, b, op) {
     } else if (op === '÷') {
         answer = divide(a, b);
     }
-    return display.textContent = round(answer).toString();
+    console.log(answer);
+    if (answer !== undefined) {
+        return display.textContent = round(answer).toString();
+    } else {
+        return display.textContent = "To Infinity... AND BEYOND!";
+    }
+    
 }
 
 function add(a, b) {
@@ -230,7 +244,6 @@ function divide(a, b) {
     if (b == 0) {
         num1 = 0;
         console.log('nice going');
-        return display.textContent = "BAD!"
     } else {
         console.log('division answer: ' + (parseInt(a) / parseInt(b)));
         return num1 = a / b;
@@ -250,4 +263,5 @@ function clear() {
     decBtn.disabled = false;
     decNum = false;
     backspaceClear = false;
+    checkNum = true;
 }
