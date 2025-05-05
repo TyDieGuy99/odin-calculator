@@ -10,6 +10,7 @@ let decNum = false;  //if num1 has a decimal, deleting the op will prevent anoth
 let decNum2 = false;
 let decBtnCheck = false; //check if a decimal is in place
 let backspaceClear = false; //if user hits backspace on answer, set to 0
+let posNegCheck = false;
 
 //button setup
 
@@ -149,6 +150,7 @@ delBtn.addEventListener('click', () => {
                         checkNum = true;
                         display.textContent = '0';
                         num1 = 0;
+                        
                     }
                 }
                 
@@ -164,6 +166,7 @@ delBtn.addEventListener('click', () => {
             if (num2 === '-') {
                 display.textContent = display.textContent.slice(0, -3);
                 num2 = 0;
+                posNegCheck = false;
             }
             console.log(num2);
         } else { //when deleting an operator
@@ -198,8 +201,10 @@ posNegBtn.addEventListener('click', () => {
     } else if (boolean == true && num2 !== '') {
         num2 = num2 * -1;
         if (num2 < 0) {
+            posNegCheck = true;
             display.textContent = num1 + operator + '(' + num2 + ')';
         } else {
+            posNegCheck = false;
             display.textContent = num1 + operator +  num2;
         }
         console.log('second number is: ' + num2);
@@ -210,7 +215,11 @@ posNegBtn.addEventListener('click', () => {
 //functions
 function updateDisplay(value) {
     let currentDisplay = display.textContent;
-    display.textContent = currentDisplay + value;
+    if (posNegCheck == true) {
+        display.textContent = num1 + operator + '(' + num2 + ')';
+    } else {
+        display.textContent = currentDisplay + value;
+    }
 }
 
 function operate(a, b, op) {
@@ -277,4 +286,5 @@ function clear() {
     decNum = false;
     backspaceClear = false;
     checkNum = true;
+    posNegCheck = false;
 }
