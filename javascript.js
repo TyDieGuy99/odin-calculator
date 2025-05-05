@@ -274,7 +274,7 @@ function divide(a, b) {
 }
 
 function round (roundedNumber) {
-    return parseFloat(Math.round(roundedNumber + 'e' + 15) + 'e-' + 15);
+    return parseFloat(Math.round(roundedNumber + 'e' + 12) + 'e-' + 12);
 }
 
 function clear() {
