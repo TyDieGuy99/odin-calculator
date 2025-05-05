@@ -6,13 +6,16 @@
     margin: auto;
     margin-top: 150px;
     padding: 15px;
-    background-color: skyblue;
+    background-color: #3B0855;
     border-radius: 15px;
+    
 }
 
 .columns {
     display: flex;
     justify-content: center;
+    background-color: #852467;
+    border-radius: 10px;
 }
 
 .buttons {
@@ -27,33 +30,30 @@
     flex-direction: column;
     align-items: center;
     width: 250px;
-    background-color:purple;
 }
 
 .opbtn,
 #equalBtn {
-    background-color:burlywood;
+    background-color: #EE227D;
 }
 
 .other {
     display: flex;
     flex-direction: row;
-    background-color:aliceblue;
 }
 
 .otherBtn {
-    background-color: red;
+    background-color: #30C0B7;
 }
 
 .numbers {
     display: flex;
     flex-flow: row wrap;
     width: 300px;
-    background-color:pink;
 }
 
 .numBtn {
-    background-color:beige;
+    background-color: #498099;
     
 }
 
@@ -62,18 +62,22 @@ button {
     justify-content: center;
     padding: 25px;
     margin: 5px;
-    font-size: 20px;
+    font-size: 32px;
     width: 90px;
     border-radius: 25px;
+    color: white;
+    font-weight: bold;
+    border-color: #3B0855;
 }
 
 h3 {
     display: flex;
     justify-content: flex-end;
     color: white;
-    background-color: gray;
+    background-color: #FD8083;
     padding-right: 10px;
     border-radius: 10px;
+    font-size: 48px;
 }
 
 #zero {
