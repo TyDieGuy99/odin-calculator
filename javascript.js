@@ -7,6 +7,7 @@ let checkNum = true; //used to set the display to show 0
 const display = document.querySelector('h3');
 display.textContent = 0;
 let decNum = false;  //if num1 has a decimal, deleting the op will prevent another dec being added
+let decNum2 = false;
 let decBtnCheck = false; //check if a decimal is in place
 let backspaceClear = false; //if user hits backspace on answer, set to 0
 
@@ -24,7 +25,11 @@ numBtns.forEach((button) => {
             if (decBtnCheck == false) {
                 decBtnCheck = true;
                 decBtn.disabled = true;
-                decNum = true;
+                if (boolean == false) {
+                    decNum = true;
+                } else {
+                    decNum2 = true;
+                }
                 checkNum = false;
                 console.log('this check went through');
             } else {
@@ -121,7 +126,11 @@ delBtn.addEventListener('click', () => {
             if (prevChar === '.') { //if deleting a decimal, set check back to false
                 decBtnCheck = false;
                 decBtn.disabled = false;
-                decNum = false;
+                if (boolean == false) {
+                    decNum = false;
+                } else {
+                    decNum2 = false;
+                }
             }
             if (boolean == false) { //1st number
                 if (backspaceClear === true) { //check if user is deleting the original answer
