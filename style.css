@@ -2,19 +2,17 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: center;
     max-width: 400px;
     margin: auto;
     margin-top: 150px;
     padding: 15px;
     background-color: skyblue;
+    border-radius: 15px;
 }
 
 .columns {
     display: flex;
-    gap: 5px;
     justify-content: center;
-    text-align: center
 }
 
 .buttons {
@@ -28,23 +26,45 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 250px;
+    background-color:purple;
+}
 
+.opbtn,
+#equalBtn {
+    background-color:burlywood;
 }
 
 .other {
     display: flex;
     flex-direction: row;
+    background-color:aliceblue;
+}
+
+.otherBtn {
+    background-color: red;
 }
 
 .numbers {
     display: flex;
     flex-flow: row wrap;
-    max-width: 250px;
+    width: 300px;
+    background-color:pink;
+}
+
+.numBtn {
+    background-color:beige;
+    
 }
 
 button {
+    display: flex;
+    justify-content: center;
     padding: 25px;
     margin: 5px;
+    font-size: 20px;
+    width: 90px;
+    border-radius: 25px;
 }
 
 h3 {
@@ -52,5 +72,12 @@ h3 {
     justify-content: flex-end;
     color: white;
     background-color: gray;
+    padding-right: 10px;
+    border-radius: 10px;
+}
+
+#zero {
+    display: flex;
+    width: 190px;
 }
 
